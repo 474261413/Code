@@ -1,0 +1,174 @@
+﻿@model News
+@{
+    ViewBag.Title = "添加新闻";
+    var NewsTypeList = AiErLan.Utils.EnumUtil.GetList(typeof(NewsType)).Select(s => new SelectListItem
+    {
+        Text = s.EnumDescription,
+        Value = s.EnumID
+    }).OrderByDescending(s => s.Value);
+    var NewsStatusList = AiErLan.Utils.EnumUtil.GetList(typeof(NewsStatus)).Select(s => new SelectListItem
+    {
+        Text = s.EnumDescription,
+        Value = s.EnumID
+    }).OrderByDescending(s => s.Value);
+
+}
+@section cssHead{
+
+}
+@section scriptHead{
+    <script src="~/ueditor/ueditor.config.js"></script>
+    <script src="~/ueditor/ueditor.all.js"></script>
+    <script>
+        function SubmitForm() {
+            $.ajax({
+                type: "POST",
+                url: "/admin/news/EidtNews",
+                data: $("#commentForm").serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        layer.alert("操作成功", 3);
+                        location.href = '/admin/news/EidtNews?id=' + data.id;
+                        //    alert("操作成功")
+                        //layer.alert("操作成功", 1, function () {
+
+                        // //   parent.location.reload();
+                        //});
+
+
+                    } else {
+                        //  alert(data.msg);
+                        layer.alert("操作失败", 3);
+                    }
+                }
+            });
+
+        }
+    </script>
+
+}
+@section scriptFoot{
+    <script type="text/javascript">
+
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('Contents')就能拿到相关的实例
+        var ue = UE.getEditor('Contents');
+
+
+    </script>
+}
+
+<script type="text/plain" id="j_ueditorupload" style="height:5px;display:none;">
+</script>
+<script>
+
+        //实例化编辑器
+        var o_ueditorupload = UE.getEditor('j_ueditorupload',
+            {
+                autoHeightEnabled: false
+            });
+        o_ueditorupload.ready(function () {
+            o_ueditorupload.hide();//隐藏编辑器
+
+            //监听图片上传
+            o_ueditorupload.addListener('beforeInsertImage', function (t, arg) {
+                debugger;
+                $pp = (arg[0].src);
+                $("#img").html("<img width='200px'  src='" + $pp + "'/>")
+                $("#Images").val($pp);
+
+            });
+        });
+
+        //弹出图片上传的对话框
+        function upImage() {
+            var myImage = o_ueditorupload.getDialog("insertimage");
+            myImage.open();
+        }
+
+</script>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>添加新闻</h5>
+
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal m-t" id="commentForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标题：</label>
+                        <div class="col-sm-9">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <input id="Title" name="Title" minlength="2" type="text" class="form-control" required="" value="@Model.Title" aria-required="true">
+                        </div>
+                    </div><div class="form-group">
+                        <label class="col-sm-2 control-label">文章类型：</label>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("Type", NewsTypeList, new { @class = "form-control m-b" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">关键字：</label>
+                        <div class="col-sm-9">
+                            <input id="cemail" type="text" class="form-control" name="Keys" required="" value="@Model.Keys">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">显示图片：</label>
+                        <div class="col-sm-9">
+                            <div id="img">
+                                @if (!string.IsNullOrWhiteSpace(Model.Images))
+                                {
+                                    <img width='200px' src='@Model.Images' />
+
+    }
+                            </div>
+                            <div class="col-md-5">
+                                 <input id="Images" style="" type="text" class="form-control" name="Images" value="@Model.Images"> 
+                            </div>
+                           
+                            <button type="button" onClick="upImage()">上传图片</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">简介：</label>
+                        <div class="col-sm-9">
+                            <textarea id="Intro" name="Intro" class="form-control" required="" aria-required="true">@Model.Intro</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">内容：</label>
+                        <div class="col-sm-9 ">
+                            <script id="Contents" type="text/plain" style="width:100%;height:500px;">
+                                @Html.Raw(Model.Contents)
+                            </script>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否显示：</label>
+                        <div class="col-sm-3">
+                            @Html.DropDownList("Status", NewsStatusList, new { @class = "form-control m-b" })
+                            @*<input id="Status" type="text" class="form-control" name="Status" value="@Model.Status">*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button class="btn btn-primary" type="button" onclick="SubmitForm()">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
