@@ -11,12 +11,12 @@
             <th>类别</th>
             <th>是否显示</th>
             <th>创建时间</th>
- 
+
             <th width="165px">操作</th>
         </tr>
     </thead>
     <tbody>
-        @*<tr id="loadingContent" style="display:none;"><td colspan="10" style="text-align:center;"><img src="@fileUrl/Content/neno/assets/images/loading.gif">正在加载数据，请稍候...</td></tr>*@
+        <tr id="loadingContent" style="display:none;"><td colspan="10" style="text-align:center;"><img src="/Content/images/loading.gif">正在加载数据，请稍候...</td></tr>
         @if (Model == null || !Model.Any())
         {
             <tr><td colspan="10" style="text-align:center;">暂无数据！</td></tr>
@@ -30,11 +30,23 @@
                     <td>@item.Id</td>
                     <td>@(item.Title)</td>
                     <td>@( EnumUtil.GetDescription(typeof(NewsType), item.Type))</td>
-                    <td>@( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))</td>
-                    <td>@item.CreateDateTime</td>
-                     
                     <td>
-                        <a href="javascript:;" onclick="Edit(@item.Id,@item.Type)" class="btn btn-default btn-sm btn-icon icon-left">
+                        @if (item.Status ==(int) NewsStatus.YC)
+                        {
+                            <span style="color:red">
+                                @( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))
+                        </span>
+                        }
+                        else
+                        {
+                            @( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))
+
+                        }
+                    </td>
+                    <td>@item.CreateDateTime</td>
+
+                    <td>
+                        <a href="/admin/news/EidtNews?id=@item.Id" class="btn btn-default btn-sm btn-icon icon-left">
                             <i class="fa fa-edit"></i>
                             编辑
                         </a>

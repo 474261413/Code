@@ -18,12 +18,12 @@ namespace AiErLan.Web.Areas.Admin.Controllers
         AiErLan.Handle.News newsbll = new Handle.News();
         // GET: Admin/News
         public ActionResult Index(NewsReq rep)
-        { 
+        {
             int total = 0;
             rep.PageIndex = rep.PageIndex ?? 1;
             rep.PageSize = rep.PageSize ?? 5;
             var list = newsbll.GetNewsList(rep, out total);
-            ViewBag.Pager = PagerHelper.CreatePagerByAjax(rep.PageIndex.Value, rep.PageSize.Value, total, "News.Page");
+            ViewBag.Pager = PagerHelper.CreatePagerByAjax(rep.PageIndex.Value, rep.PageSize.Value, total, "AiErLan.NewsPage");
             if (Request.IsAjaxRequest())
             {
                 return View("_index", list);
@@ -40,17 +40,6 @@ namespace AiErLan.Web.Areas.Admin.Controllers
             }
             model = model ?? new Data.News();
             model.Type = (int)Data.Enums.NewsType.XW;
-            return View(model);
-        }
-
-        public ActionResult EidtProduct(long? id)
-        {
-            Data.News model = null;
-            if (id.HasValue)
-            {
-                model = newsbll.GetNewsById(id);
-            }
-            model = model ?? new Data.News();
             return View(model);
         }
 

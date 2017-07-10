@@ -1,0 +1,15 @@
+﻿@model AiErLan.Data.News
+@{
+    ViewBag.Title = "产品详情";
+}
+@if (Model == null)
+{
+    <p>您查看的内容不存在</p>
+}
+else {
+
+    <p>@Model.Title</p>
+    @Html.Raw( Model.Contents)
+
+} 
+

@@ -1,4 +1,4 @@
-﻿ 
+﻿@model  IQueryable<News>
 @{
     ViewBag.Title = "文章列表";
 
@@ -22,6 +22,7 @@
  }
 @section scriptFoot{
     
+<script src="/Scripts/AiErLan.js"></script>
     <script type="text/javascript">
   
     
@@ -43,11 +44,11 @@
 
           
  
-            <button type="button" onclick="StudentApply.Page(1)" class="btn btn-info"><i class="fa fa-search"></i>搜索</button>
+            <button type="button" onclick="AiErLan.NewsPage(1)" class="btn btn-info"><i class="fa fa-search"></i>搜索</button>
  
         </div>
     </div>
     <!-- /.navbar-collapse -->
 </nav>
-@*<div class="ibox-content" id="list">@Html.Partial("_Index", Model)</div>*@
+<div class="ibox-content" id="list">@Html.Partial("_Index", Model)</div>
 

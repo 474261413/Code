@@ -36,7 +36,7 @@ namespace AiErLan.Data.Enums
         [Description("行业新闻")]
         XW = 0,
         /// <summary>
-        /// 行业新闻
+        /// 产品介绍
         /// </summary>
         [Description("产品介绍")]
         CP = 1,

@@ -82,5 +82,9 @@ namespace AiErLan.Handle
         {
             return dataOperate.Find<Data.News>(s => s.Id == id);
         }
+        public Data.News GetNewsById(long? id,int type)
+        {
+            return dataOperate.Find<Data.News>(s => s.Id == id&&s.Type==type);
+        }
     }
 }
