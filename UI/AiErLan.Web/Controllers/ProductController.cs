@@ -15,21 +15,23 @@ namespace AiErLan.Web.Controllers
         // GET: Product
         public ActionResult Index(NewsReq rep)
         {
-            int total = 0;
-            rep.PageIndex = rep.PageIndex ?? 1;
-            rep.PageSize = rep.PageSize ?? 5;
-            var list = newsbll.GetNewsList(rep, out total);
-            ViewBag.Pager = PagerHelper.CreatePagerByAjax(rep.PageIndex.Value, rep.PageSize.Value, total, "AiErLan.NewsPage");
             if (Request.IsAjaxRequest())
             {
-                return View("_index", list);
+                int total = 0;
+                rep.PageIndex = rep.PageIndex ?? 1;
+                rep.PageSize = rep.PageSize ?? 5;
+                rep.Type = (int)Data.Enums.NewsType.CP;
+                var list = newsbll.GetNewsList(rep, out total);
+                ViewBag.Pager = PagerHelper.CreatePagerByAjax(rep.PageIndex.Value, rep.PageSize.Value, total, "AiErLan.Product"); 
+                return View("ProductList", list);
             }
-            return View(list);
+            return View();
         }
 
-        public ActionResult Detail(long id=0) {
+        public ActionResult Detail(long id = 0)
+        {
 
-         var model=   newsbll.GetNewsById(id, (int)NewsType.CP);
+            var model = newsbll.GetNewsById(id, (int)NewsType.CP);
             return View(model);
         }
     }

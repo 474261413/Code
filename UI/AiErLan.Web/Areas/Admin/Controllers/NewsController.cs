@@ -39,7 +39,7 @@ namespace AiErLan.Web.Areas.Admin.Controllers
                 model = newsbll.GetNewsById(id);
             }
             model = model ?? new Data.News();
-            model.Type = (int)Data.Enums.NewsType.XW;
+            //model.Type = (int)Data.Enums.NewsType.XW;
             return View(model);
         }
 

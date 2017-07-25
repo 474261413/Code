@@ -175,17 +175,17 @@ namespace AiErLan.Utils
             {
                 if (this.isAjax)
                 {
-                    strHtml.AppendFormat("<li><a href=\"javascript:;\" onclick=\"{0}({1}); return false;\"><i class=\"fa fa-angle-double-left\"></i></a>",
+                    strHtml.AppendFormat("<li><a href=\"javascript:;\" onclick=\"{0}({1}); return false;\"><i class=\"am-icon-angle-double-left\"></i></a>",
                         this.jsClass, this.index - 1);
                 }
                 else
                 {
-                    strHtml.AppendFormat("<li class=\"next\"><a  href=\"{0}page={1}\" ><i class=\"fa fa-angle-double-left\"></i></a></li>", this.url, this.index - 1);
+                    strHtml.AppendFormat("<li class=\"next\"><a  href=\"{0}page={1}\" ><i class=\"am-icon-angle-double-left\"></i></a></li>", this.url, this.index - 1);
                 }
             }
             else
             {
-                strHtml.Append("<li class=\"prev disabled\"><a><i class=\"fa fa-angle-double-left\"></i></a></li>");
+                strHtml.Append("<li class=\"prev disabled\"><a><i class=\"am-icon-angle-double-left\"></i></a></li>");
             }
             if (this.numButtonVisible)
             {
@@ -243,16 +243,16 @@ namespace AiErLan.Utils
                 {
                     if (this.isAjax)
                     {
-                        strHtml.AppendFormat("<li class=\"next\"><a href=\"javascript:;\" onclick=\"{0}({1}); return false;\"><i class=\"fa fa-angle-double-right\"></i></a></li>", this.jsClass, this.index + 1);
+                        strHtml.AppendFormat("<li class=\"next\"><a href=\"javascript:;\" onclick=\"{0}({1}); return false;\"><i class=\"am-icon-angle-double-right\"></i></a></li>", this.jsClass, this.index + 1);
                     }
                     else
                     {
-                        strHtml.AppendFormat("<li class=\"next\"><a href=\"{0}page={1}\"><i class=\"fa fa-angle-double-right\"></i></a></li></a></li>", this.url, this.index + 1);
+                        strHtml.AppendFormat("<li class=\"next\"><a href=\"{0}page={1}\"><i class=\"am-icon-angle-double-right\"></i></a></li></a></li>", this.url, this.index + 1);
                     }
                 }
                 else
                 {
-                    strHtml.Append("<li class=\"prev disabled\"><a><i class=\"fa fa-angle-double-right\"></i></a></li>");
+                    strHtml.Append("<li class=\"prev disabled\"><a><i class=\"am-icon-angle-double-right\"></i></a></li>");
                 }
             }
 

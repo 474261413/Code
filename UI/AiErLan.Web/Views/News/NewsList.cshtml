@@ -1,0 +1,35 @@
+﻿@model  IQueryable<News>
+@{
+    ViewBag.Title = "NewsList";
+    Layout = null;
+}
+
+<div class=" am-container-1">
+    <div class="service-center">
+        <ul class="service-ul">
+
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <li class="am-u-lg-12 am-u-md-12 am-u-sm-12">
+                        <div class="am-u-lg-8 am-u-md-8 am-u-sm-12 service-content">
+                            <h4 class="w-blue"><a href=""  class="w-blue"> @item.Title</a></h4>
+                            <p>
+                           @item.Intro
+                            </p>
+                        </div>
+                        <div class="am-u-lg-4 am-u-md-4 am-u-sm-12 service-img">
+                            <img src="@(string.IsNullOrWhiteSpace(item.Images)?"/Content/images/none1.jpg":item.Images)" />
+                        </div>
+                    </li>
+                }
+
+            }
+         
+        </ul>
+        <div style="text-align:center;padding:20px 0;"> @Html.Raw(ViewBag.Pager)</div>
+
+    </div>
+</div>
+

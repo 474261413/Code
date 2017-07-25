@@ -44,6 +44,11 @@ namespace AiErLan.Data.Enums
         /// 经典案例
         /// </summary>
         [Description("经典案例")]
-        AL = 2,
+       JDAL = 2,
+        /// <summary>
+        /// 资质证书
+        /// </summary>
+        [Description("资质荣誉")]
+        ZZRY = 3,
     }
 }

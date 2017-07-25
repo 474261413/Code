@@ -335,7 +335,7 @@ namespace AiErLan.Utils
                     return null;
                 }
             }
-            return null; 
+            return null;
         }
         /// <summary>
         /// 替换中文标点符号
@@ -668,8 +668,13 @@ namespace AiErLan.Utils
             if ((str.Length - startIndex) < length)
             {
                 length = str.Length - startIndex;
+                return str.Substring(startIndex, length);
+
             }
-            return str.Substring(startIndex, length);
+            else
+            {
+                return str.Substring(startIndex, length) + "......";
+            }
         }
 
         /// <summary>

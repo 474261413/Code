@@ -54,7 +54,7 @@ public class ListFileManager : Handler
                 .Where(x => SearchExtensions.Contains(Path.GetExtension(x).ToLower()))
                 .Select(x => PathToList + x.Substring(localPath.Length).Replace("\\", "/")));
             Total = buildingList.Count;
-            FileList = buildingList.OrderBy(x => x).Skip(Start).Take(Size).ToArray();
+            FileList = buildingList.OrderByDescending(x => x).Skip(Start).Take(Size).ToArray();
         }
         catch (UnauthorizedAccessException)
         {

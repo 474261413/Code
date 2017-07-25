@@ -2,14 +2,56 @@
 @{
     ViewBag.Title = "产品详情";
 }
+
+@*<p>@Model.Title</p>
+    @Html.Raw( Model.Contents)*@
+
+<div class="toppic">
+    <div class="am-container-1">
+        @*<div class="toppic-title left">
+            <i class="am-icon-newspaper-o toppic-title-i"></i>
+            <span class="toppic-title-span">新闻详情</span>
+            <p>News Information</p>
+        </div>
+        <div class="right toppic-progress">
+            <span><a href="news.html" class="w-white">新闻动态</a></span>
+            <i class=" am-icon-arrow-circle-right w-white"></i>
+            <span><a href="news-inform.html" class="w-white">新闻详情</a></span>
+        </div>*@
+    </div>
+</div>
+
 @if (Model == null)
 {
-    <p>您查看的内容不存在</p>
+    <div class="solution-inform">
+        <div class=" solution-inform-content-all">
+            <div class="solution-inform-content" style="height:500px;">
+
+                <p>您查看的内容不存在</p>
+            </div>
+        </div>
+    </div>
 }
-else {
+else
+{
+    ViewBag.Title = Model.Title;
+    ViewBag.Key = Model.Keys;
+    
 
-    <p>@Model.Title</p>
-    @Html.Raw( Model.Contents)
+                <div class="solution-inform">
+                    <div class=" solution-inform-content-all"><div class="am-container-1 margin-t30">
+                                                                  <div class="words-title ">
+                                                                      <span>@Model.Title</span>
+                                                                      <div class="time">发布时间： @Model.CreateDateTime.ToStringOrNull("yyyy-MM-dd")</div>
+                                                                  </div>
+</div>
+                        <div class="solution-inform-content" style="min-height:500px;">
 
-} 
+                            @Html.Raw(Model.Contents)
+                        </div>
+                    </div>
+                </div>
+
+}
+
 

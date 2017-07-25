@@ -1,0 +1,36 @@
+﻿@model  IQueryable<News>
+@{
+    ViewBag.Title = "prodcut";
+    Layout = null;
+}
+
+
+<div class="am-tabs-bd solutions-tabs-content ">
+    <div data-tab-panel-0 class="am-tab-panel am-active">
+        <ul class=" solutions-content-ul">
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <li class="am-u-sm-12 am-u-md-6 am-u-lg-12">
+                        <a href="/Product/Detail/@item.Id">
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3 solution-tabs-img">
+                                <img src="@(string.IsNullOrWhiteSpace(item.Images)?"/Content/images/none.jpg":item.Images)" />
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-9 solution-tabs-words">
+                                <h5>@item.Title</h5>
+                                <p>@item.Intro</p>
+                            </div>
+                        </a>
+                    </li>
+
+                }
+            }
+   
+           
+
+        </ul>
+        <div style="text-align:center;padding:20px 0;"> @Html.Raw(ViewBag.Pager)</div>
+
+    </div>
+</div>

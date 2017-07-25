@@ -1,86 +1,180 @@
-﻿@{
+﻿@model AiErLan.Data.Model.IndexView
+@{
     ViewBag.Title = "艾尔蓝科技环保有限公司";
     //Layout = null;
-    
+
+}
+
+
+<div class="rollpic">
+    <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+        <ul class="am-slides">
+            <li><img src="~/Content/images/t1.jpg" /></li>
+            <li><img src="~/Content/images/t2.jpg" /></li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div class=" news-all">
+    <div class="am-container-1">
+        <div class="news part-all">
+            <div class="part-title border_bottom">
+                <a href="#" class="part-title_left">
+                    <i class="am-icon-newspaper-o part-title-i"></i>
+                    <span class="part-title-span">新闻动态</span>
+
+                </a>
+                <a href="/News/index" class="part-title_right" target="_blank"><span class="see-more2">查看更多<i class="am-icon-angle-double-right"></i></span></a>
+
+            </div>
+            <div class="news-content ">
+                <ul class="news-content-ul">
+                    @if (Model.News.Any())
+                    {
+                        foreach (var item in Model.News)
+                        {
+                            <li class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                                <a href="/News/Detail/@item.Id" target="_blank" title="@item.Title">
+                                    <div class=" am-u-sm-12 am-u-md-12 am-u-lg-5">
+                                        <div class="news-img">
+                                            <img src="@(string.IsNullOrWhiteSpace(item.Images)?"/Content/images/none.jpg":item.Images)" />
+                                        </div>
+                                    </div>
+                                    <div class=" am-u-sm-12 am-u-md-12 am-u-lg-7">
+                                        <span class="news-right-title">@(AiErLan.Utils.Tool.CutString(item.Title, 0, 30))</span>
+                                        <p class="news-right-time">@item.CreateDateTime.ToStringOrNull("yyyy-MM-dd")</p>
+                                        <p class="news-right-words">@(AiErLan.Utils.Tool.CutString(item.Intro, 0, 60))</p>
+
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </li>
+                        }
+                    }
+
+
+
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="am-container-1">
+    <div class="part-title border_bottom">
+        <a href="#" class="part-title_left">
+            <i class="am-icon-newspaper-o part-title-i"></i>
+            <span class="part-title-span">产品介绍</span>
+
+        </a>
+        <a href="/Product/index" target="_blank" class="part-title_right"><span class="see-more2">查看更多<i class="am-icon-angle-double-right"></i></span></a>
+
+    </div>
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+  am-avg-md-3 am-avg-lg-4 am-gallery-bordered customer-case-ul" data-am-gallery="{  }">
+        @if (Model.Product.Any())
+        {
+            foreach (var item in Model.Product)
+            {
+                <li>
+                    <div class="am-gallery-item">
+                        <a href="/Product/Detail/@item.Id" class="" target="_blank">
+                            <div class="customer-case-img">
+                                <img src="@(string.IsNullOrWhiteSpace(item.Images)?"/Content/images/none1.jpg":item.Images)" />
+                            </div>
+                            <h3 class="am-gallery-title">@item.Title</h3>
+                            <div class="am-gallery-desc gallery-words">@(AiErLan.Utils.Tool.CutString(item.Intro, 0, 80))</div>
+                        </a>
+                    </div>
+                </li>
+            }
+        }
+
+
+    </ul>
+
+</div>
+
+@if (Model.Customer.Any())
+{
+    <div class="gray-li">
+        <div class="customer-case part-all ">
+            <div class="part-title">
+                <a href="customer-case.html">
+                    <i class=" am-icon-briefcase part-title-i"></i>
+                    <span class="part-title-span">客户案例</span>
+                 </a>
+
+                <a href="/Customer/index" target="_blank" class="part-title_right"><span class="see-more2">查看更多<i class="am-icon-angle-double-right"></i></span></a>
+            </div>
+
+
+            <ul data-am-widget="gallery" class=" am-avg-sm-1
+  am-avg-md-4 am-avg-lg-4 am-gallery-bordered customer-case-content">
+                @foreach (var item in Model.Customer)
+                {
+                    <li class="case-li am-u-sm-6 am-u-md-6 am-u-lg-3">
+                        <div class="am-gallery-item case-img1">
+                            <a href="/Customer/Detail/@item.Id" class="" target="_blank">
+                                <img src="@(string.IsNullOrWhiteSpace(item.Images)?"/Content/images/none1.jpg":item.Images)" />
+
+                            </a>
+                        </div>
+                        <div class="case-li-mengban">
+                            <div class=" case-word">
+                                <h3 class="am-gallery-title">@item.Title</h3>
+                                <p>@item.CreateDateTime.ToStringOrNull("yyyy-MM-dd")</p>
+                                <a href="/Customer/Detail/@item.Id" class="" target="_blank"><span><i class="am-icon-eye"></i>查看详情</span></a>
+                            </div>
+                        </div>
+                    </li>
+                }
+                </ul>
+                @*<div class="lan-bott">
+                        <div class="left">
+                            <span>全方位解决方案,为您轻松解决不同问题</span>
+                            <p>A full range of solutions for you to solve different problems</p>
+                        </div>
+                        <div class="right">
+                            <a href="customer-case.html">
+                                <span class="see-more">查看更多<i class="am-icon-angle-double-right"></i></span>
+                            </a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>*@
+                <div class="part-title">
+
+                </div>
+            </div>
+        </div>
 }
 
 
 
+        @*<div class="part-all gray-li">
+                <div class="customer  am-container-1">
+                    <div class="part-title">
+                        <i class="am-icon-users part-title-i"></i>
+                        <span class="part-title-span">服务客户</span>
+                        <p>Serve Customers</p>
+                    </div>
 
-<div class="section">
-    <div class="container">
-        <div class="section--header">
-            <h2 class="section--title">核心优势</h2>
-            <p class="section--description">
-                我们的产品源自德国的工艺技术 自主研发生产，持续产品升级，始终保持产品国际领先地位，无需熏蒸，工作效率高。降解效率快，时间持久一般5-8年
-                。产品均为水溶性，本身无毒，降解后无二次污染                。 
-            </p>
-        </div>
+                    <div class="am-slider am-slider-default am-slider-carousel part-all" data-am-flexslider="{itemWidth:150, itemMargin: 5, slideshow: false}" style="  background-color: #f0eeed; box-shadow:none;">
+                        <ul class="am-slides">
+                            <li><img src="~/Content/img/ptn4.png" /></li>
+                            <li><img src="~/Content/img/ptn5.png" /></li>
+                            <li><img src="~/Content/img/ptn6.png" /></li>
+                            <li><img src="~/Content/img/ptn7.png" /></li>
+                            <li><img src="~/Content/img/ptn8.png" /></li>
+                            <li><img src="~/Content/img/ptn4.png" /></li>
+                            <li><img src="~/Content/img/ptn5.png" /></li>
+                            <li><img src="~/Content/img/ptn6.png" /></li>
+                            <li><img src="~/Content/img/ptn7.png" /></li>
+                            <li><img src="~/Content/img/ptn8.png" /></li>
+                        </ul>
+                    </div>
 
-        <!--index-container start-->
-        <div class="index-container">
-            <div class="am-g">
-                <div class="am-u-md-3">
-                    <div class="features_item">
-                        <img src="~/Content//images/MS-P201.jpg" alt="【光之吻】光触媒（MS-P201）">
-                        <h3 class="features_item--title">【光之吻】光触媒（MS-P201）</h3>
-                        <p class="features_item--text">
-                            明晟光触媒源自德国技术，为锐钛型纳米二氧化钛水溶液，不含重金属，无毒无害，外观为澄清溶液，长时间静置，不发生沉积现象，在室内光线或灯光下都具有优异的光催化效果，能分解在空气中的有机化合物，对甲醛、苯系化合物及TVOC有极强的光分解活性，并抑制细菌生长和病毒的活性，有效杀灭多种细菌，平均抗菌率高达99.9%以上（日光灯照射测定数据），达到空气净化，杀菌，除臭，防霉。通过广东省微生物分析检测中心测试，在日光灯下，24小时甲醛的去化率为93.1%，苯的去化率为96.6%，TVOC的去化率为97.4%，对大肠杆菌抗菌率为99.99%，对金黄色葡萄球菌抗菌率为99.9%。
-                        </p>
-                    </div>
                 </div>
-                <div class="am-u-md-3">
-                    <div class="features_item">
-                        <img src="~/Content//images/MS-P202.jpg" alt="【光之吻】光触媒（MS-P202）">
-                        <h3 class="features_item--title">【光之吻】光触媒（MS-P202）</h3>
-                        <p class="features_item--text">
-                            MS-P202源自德国技术，主要成分为活性氨基高分子聚合物，不含重金属，无毒无害，外观为无色透明，长时间静置不发生沉积现象，具有优异的除醛效果。通过广东省微生物分析检测中心测试，24小时甲醛的去化率为93.1%。
-                        </p>
-                    </div>
-                </div>
-                <div class="am-u-md-3">
-                    <div class="features_item">
-                        <img src="~/Content//images/MS-P203.jpg" alt="【光之吻】光触媒（MS-P203）">
-                        <h3 class="features_item--title">【光之吻】光触媒（MS-P203）</h3>
-                        <p class="features_item--text">
-                            MS-P203源自德国技术，主要成分为活性铂离子聚合物和少量杀菌剂，外观为无色透明，略带有芳香味，能够高效捕捉、分解含胺、硫化物等臭味分子。产品对人畜无害，不损坏纺织品、板材、皮具、金属等，使用后无不悦气味，无斑渍。
-                        </p>
-                    </div>
-                </div>
-                <div class="am-u-md-3">
-                    <div class="features_item">
-                        <img src="~/Content//images/MS-P204.jpg" alt="【光之吻】光触媒（MS-P204）">
-                        <h3 class="features_item--title">【光之吻】光触媒（MS-P204）</h3>
-                        <p class="features_item--text">
-                            MS-P204源自德国技术，主要成分为水溶性树脂及其水溶液。产品本身不具有VOC有机挥发物污染物质，成膜性好、耐酸碱、硬度PH值为2H、高温80℃低温零下20℃无龟裂，适用于办公家具松脂类板材、密度板、三聚氰胺板等裸露板材的治理。产品对人体无害，使用后不改变板材自身的观感。可采用喷涂或者刷涂的方法进行施工，流平性能好，固化时间短，固化后即能达到良好的去除板材异味的效果。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            @*<div class="index-more">
-                <button type="button" class="am-btn am-btn-secondary">MORE&nbsp;&nbsp;&gt;&gt;</button>
             </div>*@
-        </div>
-        <!--index-container end-->
-    </div><div class="section">
-    <div class="container">
-        <div class="section--header">
-            <h2 class="section--title">关于我们</h2>
-            <p class="section--description">
-                艾尔蓝家环保是专业从事室内、车内甲醛、苯系物、TVOC、装修异味等有害气体检测与治理服务的高新技术企业。公司引进日本先进的污染治理技术，产品全部采用纯植物提取液并通过国家CMA认证，治理结果完全符合国家标准（GB/T18883-2002）
-            </p>
-            <p style="text-align:center">
-                <img src="~/Content/images/timg.jpg" />
-            </p>
-        </div>
-
-
-    </div>
-</div>
-</div>
-
-
-@*<div id="top"><div id="izl_rmenu" class="izl-rmenu"><a href="javascript:void(0)" onclick="shangqiao()" class="btn btn-ting"></a><a href="javascript:void(0)" onclick="qq()" class="btn btn-qq contact-icon am-icon-qq"></a><div class="btn btn-wx contact-icon am-icon-weixin"><img class="pic" src="/Content/images/weixin.jpg" style="display: none;"></div><div class="btn btn-phone"><div class="phone" style="display: none;">010-51581410</div></div><div class="btn btn-top" style="display: block;"></div></div></div>*@
-
-@*<div id="floatPanel"><div class="ctrolPanel"><a class="arrow" href="#"><span>顶部</span></a><a rel="nofollow" class="contact" href="/user/message.htm?uuid=1550463811307520" target="_blank"><span>客服</span></a><a class="qrcode" href="#"><span>微信二维码</span></a><a class="arrow" href="#"><span>底部</span></a></div><div class="popPanel" style="width: 0px; display: block;"><div class="popPanel-inner"><div class="qrcodePanel"><img src="~/Content/images/weixin.jpg" alt=">扫描二维码关注最代码为好友"><span>扫描二维码关注最代码为好友</span></div><div class="arrowPanel"><div class="arrow01"></div><div class="arrow02"></div></div></div></div></div>*@

@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\IndexView.cs" />
     <Compile Include="Model\NewsReq.cs" />
     <Compile Include="News.cs">
       <DependentUpon>AiErLanModel.tt</DependentUpon>

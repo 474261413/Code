@@ -1,0 +1,81 @@
+﻿@model AiErLan.Data.News
+
+@{
+    ViewBag.Title = "";
+    AiErLan.Handle.News newsbll = new AiErLan.Handle.News();
+    var list = newsbll.GetNewsList(s => s.Type == (int)AiErLan.Data.Enums.NewsType.XW && s.Status == (int)AiErLan.Data.Enums.NewsStatus.XS).OrderByDescending(s => s.CreateDateTime).Take(5);
+}
+
+<div class="toppic">
+    <div class="am-container-1">
+        @*<div class="toppic-title left">
+                <i class="am-icon-newspaper-o toppic-title-i"></i>
+                <span class="toppic-title-span">新闻动态</span>
+                <p>Hengwang News</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="index.html" class="w-white">首页</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="news.html" class="w-white">新闻动态</a></span>
+            </div>*@
+    </div>
+</div>
+
+
+<div class="am-container-1 news-content-all">
+    <div class="left am-u-sm-12 am-u-md-8 am-u-lg-9 ">
+        @if (Model == null)
+        {
+            <div class="solution-inform-content"><p>您查看的内容不存在</p></div>
+        }
+        else
+        {
+            ViewBag.Title = Model.Title;
+            ViewBag.Key = Model.Keys;
+            <div class="solution-inform-content">
+                <div class="words-title ">
+                    <span>@Model.Title</span>
+                    <div class="time">发布时间： @Model.CreateDateTime.ToStringOrNull("yyyy-MM-dd")</div>
+                </div>
+                <div>@Html.Raw(Model.Contents)</div>
+            </div>
+        }
+
+
+
+
+    </div>
+    <div class="left am-u-sm-12 am-u-md-4 am-u-lg-3">
+
+        <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+            <div class="hot-title"><i class="am-icon-thumbs-o-up"></i>热门新闻 / Hot 	News</div>
+            @if (list.Any())
+            {
+                int i = 0;
+                foreach (var item in list)
+                {
+                    <dl class="am-accordion-item @(i==0?"am-active":"")">
+                        <dt class="am-accordion-title">
+                            @item.Title
+                        </dt>
+                        <dd class="am-accordion-bd am-collapse   @(i==0?"am-in":"")">
+                            <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                            <div class="am-accordion-content">
+                                <a  href="/News/Detail/@item.Id">  @item.Intro</a>  
+                            </div>
+                        </dd>
+                    </dl>
+                    i++;
+                }
+
+            }
+
+
+
+       
+
+        </section>
+
+    </div>
+    <div class="clear"></div>
+</div>

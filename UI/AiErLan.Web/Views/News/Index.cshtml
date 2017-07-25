@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "新闻中心";
+}
+@section scriptFoot{
+    
+<script src="~/Scripts/AiErLan.js"></script> 
+   <script>
+       $(function () {
+
+           AiErLan.News(1)
+       })
+
+    </script>
+    }
+<div class="toppic">
+    <div class="am-container-1">
+    </div>
+</div>
+<div id="list" style="min-height:300px;"><p style="text-align:center;"> 数据加载中</p></div>
+
