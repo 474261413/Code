@@ -1826,12 +1826,309 @@ i.am-icon-tasks {
     }
 }
 
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px
+}
+
+    .pagination > li {
+        display: inline
+    }
+
+        .pagination > li > a, .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd
+        }
+
+        .pagination > li:first-child > a, .pagination > li:first-child > span {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px
+        }
+
+        .pagination > li:last-child > a, .pagination > li:last-child > span {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px
+        }
+
+        .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+            z-index: 2;
+            color: #23527c;
+            background-color: #eee;
+            border-color: #ddd
+        }
+
+    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #337ab7;
+        border-color: #337ab7
+    }
+
+    .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #fff;
+        border-color: #ddd
+    }
+
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333
+}
+
+.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px
+}
+
+.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px
+}
+
+.pagination-sm > li > a, .pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px
+}
+
+.pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px
+}
+
+.pager {
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none
+}
+
+    .pager li {
+        display: inline
+    }
+
+        .pager li > a, .pager li > span {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px
+        }
+
+            .pager li > a:focus, .pager li > a:hover {
+                text-decoration: none;
+                background-color: #eee
+            }
+
+    .pager .next > a, .pager .next > span {
+        float: right
+    }
+
+    .pager .previous > a, .pager .previous > span {
+        float: left
+    }
+
+    .pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #fff
+    }
+
+
+/* leftsead */
+#leftsead {
+    width: 161px;
+    height: 290px;
+    position: fixed;
+    bottom: 50px;
+    right: 0px;
+    z-index: 1000000000;
+}
+
+*html #leftsead {
+    margin-top: 258px;
+    position: absolute;
+    top: expression(eval(document.documentElement.scrollTop));
+}
+
+    #leftsead ul {
+        padding-left: 0;
+    }
+
+    #leftsead li {
+        width: 161px;
+        height: 60px;
+        padding-left: 0;
+    }
+
+        #leftsead li img {
+            float: right;
+        }
+
+        #leftsead li a {
+            height: 49px;
+            float: right;
+            display: block;
+            min-width: 47px;
+            max-width: 161px;
+        }
+
+            #leftsead li a .shows {
+                display: block;
+            }
+
+            #leftsead li a .hides {
+                margin-right: -143px;
+                cursor: pointer;
+                cursor: hand;
+            }
+
+            #leftsead li a.youhui .hides {
+                display: none;
+                position: absolute;
+                right: 143px;
+            }
+
+            #leftsead li a.youhui .2wm {
+                display: none;
+                position: absolute;
+                right: 143px;
+            }
+
+#p2 {
+    width: 112px;
+    background-color: #A7D2A9;
+    height: 47px;
+    margin-left: 47px;
+    border: 1px solid #8BC48D;
+    text-align: center;
+    line-height: 47px
+}
+
+#p3 {
+    width: 112px;
+    background-color: #EC9890;
+    height: 47px;
+    margin-left: 47px;
+    border: 1px solid #E6776C;
+    text-align: center;
+    line-height: 47px
+}
+
+#p1 {
+    width: 47px;
+    height: 49px;
+    float: left
+}
+
+#formeidt .applybox {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: #ccc solid 1px;
+    border-radius: 5px;
+}
+
+    #formeidt .applybox p {
+        margin: 5px 0;
+        overflow: hidden;
+    }
+
+.applybox .input_txt {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+
+.applybox .bemark {
+    height: 70px;
+}
+
+.a_button {
+    background: #1ab394 none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    width: 150px;
+}
+
+    .a_button:hover {
+        font-weight: bold;
+        color: #fff;
+    }
+
+.applybox .p_sub {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.applybox p .span1 {
+    text-align: right;
+}
+
+#formeidt .applyTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 15px 0;
+    overflow: hidden;
+    color: #847979;
+}
+
+.red {
+    color: red;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.msg {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
 @media only screen and (max-width:768px) {
+    #leftsead {
+        display:none;
+    }
+    .applybox p .span1 {
+        text-align:left;
+    }
     .product-img {
         width: 100%;
         margin-top: 25px;
     }
 
+    
     .product-content {
         margin: 0 5%;
     }
@@ -1850,6 +2147,12 @@ i.am-icon-tasks {
 
 @media only screen and (max-width:640px) {
     /*首页*/
+    #formeidt .applybox {
+        width: 95%;
+    }
+    .word {
+        left:30px;
+    }
     .solution-circle {
         font-size: 45px;
         width: 110px;
@@ -2266,217 +2569,4 @@ i.am-icon-tasks {
     .news-ul li {
         margin-top: 25px;
     }
-}
-
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px
-}
-
-    .pagination > li {
-        display: inline
-    }
-
-        .pagination > li > a, .pagination > li > span {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #337ab7;
-            text-decoration: none;
-            background-color: #fff;
-            border: 1px solid #ddd
-        }
-
-        .pagination > li:first-child > a, .pagination > li:first-child > span {
-            margin-left: 0;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px
-        }
-
-        .pagination > li:last-child > a, .pagination > li:last-child > span {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px
-        }
-
-        .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
-            z-index: 2;
-            color: #23527c;
-            background-color: #eee;
-            border-color: #ddd
-        }
-
-    .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
-        z-index: 3;
-        color: #fff;
-        cursor: default;
-        background-color: #337ab7;
-        border-color: #337ab7
-    }
-
-    .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
-        color: #777;
-        cursor: not-allowed;
-        background-color: #fff;
-        border-color: #ddd
-    }
-
-.pagination-lg > li > a, .pagination-lg > li > span {
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333
-}
-
-.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px
-}
-
-.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px
-}
-
-.pagination-sm > li > a, .pagination-sm > li > span {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5
-}
-
-.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px
-}
-
-.pagination-sm > li:last-child > a, .pagination-sm > li:last-child > span {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px
-}
-
-.pager {
-    padding-left: 0;
-    margin: 20px 0;
-    text-align: center;
-    list-style: none
-}
-
-    .pager li {
-        display: inline
-    }
-
-        .pager li > a, .pager li > span {
-            display: inline-block;
-            padding: 5px 14px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 15px
-        }
-
-            .pager li > a:focus, .pager li > a:hover {
-                text-decoration: none;
-                background-color: #eee
-            }
-
-    .pager .next > a, .pager .next > span {
-        float: right
-    }
-
-    .pager .previous > a, .pager .previous > span {
-        float: left
-    }
-
-    .pager .disabled > a, .pager .disabled > a:focus, .pager .disabled > a:hover, .pager .disabled > span {
-        color: #777;
-        cursor: not-allowed;
-        background-color: #fff
-    }
-
-
-/* leftsead */
-#leftsead {
-    width: 161px;
-    height: 290px;
-    position: fixed;
-    bottom: 50px;
-    right: 0px;
-    z-index: 1000000000;
-}
-
-*html #leftsead {
-    margin-top: 258px;
-    position: absolute;
-    top: expression(eval(document.documentElement.scrollTop));
-}
-
-    #leftsead ul {
-        padding-left: 0;
-    }
-
-    #leftsead li {
-        width: 161px;
-        height: 60px;
-        padding-left: 0;
-    }
-
-        #leftsead li img {
-            float: right;
-        }
-
-        #leftsead li a {
-            height: 49px;
-            float: right;
-            display: block;
-            min-width: 47px;
-            max-width: 161px;
-        }
-
-            #leftsead li a .shows {
-                display: block;
-            }
-
-            #leftsead li a .hides {
-                margin-right: -143px;
-                cursor: pointer;
-                cursor: hand;
-            }
-
-            #leftsead li a.youhui .hides {
-                display: none;
-                position: absolute;
-                right: 143px;
-            }
-
-            #leftsead li a.youhui .2wm {
-                display: none;
-                position: absolute;
-                right: 143px;
-            }
-
-#p2 {
-    width: 112px;
-    background-color: #A7D2A9;
-    height: 47px;
-    margin-left: 47px;
-    border: 1px solid #8BC48D;
-    text-align: center;
-    line-height: 47px
-}
-
-#p3 {
-    width: 112px;
-    background-color: #EC9890;
-    height: 47px;
-    margin-left: 47px;
-    border: 1px solid #E6776C;
-    text-align: center;
-    line-height: 47px
-}
-
-#p1 {
-    width: 47px;
-    height: 49px;
-    float: left
 }

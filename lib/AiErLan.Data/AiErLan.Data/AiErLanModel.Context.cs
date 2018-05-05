@@ -27,5 +27,6 @@ namespace AiErLan.Data
     
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
     }
 }

@@ -105,6 +105,13 @@
                             <input id="Title" name="Title" minlength="2" type="text" class="form-control" required="" value="@Model.Title" aria-required="true">
                         </div>
                     </div><div class="form-group">
+    <label class="col-sm-2 control-label">显示时间：</label>
+    <div class="col-sm-9">
+      
+        <input id="Title" name="ShowTime" minlength="2" type="text" class="form-control" required="" value="@Model.ShowTime" aria-required="true">
+    </div>
+</div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label">文章类型：</label>
                         <div class="col-sm-4">
                             @Html.DropDownList("Type", NewsTypeList, new { @class = "form-control m-b" })

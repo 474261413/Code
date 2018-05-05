@@ -51,4 +51,41 @@ namespace AiErLan.Data.Enums
         [Description("资质荣誉")]
         ZZRY = 3,
     }
+
+
+    /// <summary>
+    /// 客户类型
+    /// </summary>
+    public enum ClientType : int
+    {
+        /// <summary>
+        /// 家装
+        /// </summary>
+        [Description("家装")]
+        JZ =0,
+        /// <summary>
+        /// 工装
+        /// </summary>
+        [Description("工装")]
+        GZ = 1,
+    }
+
+    /// <summary>
+    /// 来源
+    /// </summary>
+    public enum Source : int
+    {
+        /// <summary>
+        /// 显示
+        /// </summary>
+        [Description("PC端")]
+        PC = 0,
+        /// <summary>
+        /// 隐藏
+        /// </summary>
+        [Description("移动端")]
+        Mobile = 1,
+    }
+
+
 }

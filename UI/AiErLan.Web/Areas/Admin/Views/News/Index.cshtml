@@ -24,7 +24,25 @@
     
 <script src="/Scripts/AiErLan.js"></script>
     <script type="text/javascript">
-  
+        function del(a) {
+            if (confirm("你确定删除吗？")) { 
+
+                jQuery.ajax({
+                    url: "/admin/News/DelNews?id=" + a,
+                    success: function (res) {
+                        if (res.success) {
+                            alert("删除成功");
+                            location.href = "/admin/news/index";
+                        } else {
+                            alert("删除失败");
+
+                        }
+                    
+                    }
+                });
+            }
+
+        }
     
     </script>
 

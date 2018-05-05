@@ -35,11 +35,14 @@ namespace AiErLan.Utils
             this.sourceEmailAccount = emailConfig.Account;
             this.sourceEmailSmtpServer = emailConfig.SmtpServer;
             this.sourceEmailPwd = emailConfig.EmailPwd;
-
             mailAddress = new MailAddress(sourceEmailAddress);
             credential = new NetworkCredential(sourceEmailAccount, sourceEmailPwd);
             smtpClient = new SmtpClient(sourceEmailSmtpServer);
-            smtpClient.Credentials = credential;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+           // smtpClient.Credentials = credential;
+            smtpClient.Credentials = new System.Net.NetworkCredential(sourceEmailAccount, "enlqwxcwxmqhbjbg");
+
         }
 
 
@@ -70,6 +73,35 @@ namespace AiErLan.Utils
             mailMsg.IsBodyHtml = true;
             mailMsg.BodyEncoding = Encoding.UTF8;
             smtpClient.Send(mailMsg);
+        }
+
+
+        public void SendEmail()
+        {
+            MailMessage msg = new MailMessage();
+
+            msg.To.Add("316237546@qq.com");//收件人地址  
+            //msg.CC.Add("cc@qq.com");//抄送人地址  
+
+            msg.From = new MailAddress("4742614113@qq.com", "a123123123??ee");//发件人邮箱，名称  
+
+            msg.Subject = "This is a test email from QQ";//邮件标题  
+            msg.SubjectEncoding = Encoding.UTF8;//标题格式为UTF8  
+
+            msg.Body = "this is body";//邮件内容  
+            msg.BodyEncoding = Encoding.UTF8;//内容格式为UTF8  
+
+            SmtpClient client = new SmtpClient();
+
+            client.Host = "smtp.qq.com";//SMTP服务器地址  
+            client.Port = 587;//SMTP端口，QQ邮箱填写587  
+
+            client.EnableSsl = true;//启用SSL加密  
+
+            client.Credentials = new NetworkCredential("474261413@qq.com", "a123123123??");//发件人邮箱账号，密码  
+
+            client.Send(msg);//发送邮件  
+
         }
 
         /// <summary>

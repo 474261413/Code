@@ -7,6 +7,7 @@
       <Diagram DiagramId="6ac9c76576d748b7a4885af1cac68006" Name="Diagram1">
         <EntityTypeShape EntityType="AiLanLanModel.News" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="AiLanLanModel.Admin" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AiLanLanModel.Client" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

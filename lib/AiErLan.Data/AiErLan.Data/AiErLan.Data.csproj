@@ -70,6 +70,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AiErLanModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>AiErLanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApiCallResult.cs" />
+    <Compile Include="Model\ClientReq.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\IndexView.cs" />

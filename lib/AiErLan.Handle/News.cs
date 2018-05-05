@@ -27,7 +27,8 @@ namespace AiErLan.Handle
                     model.Status = news.Status;
                     model.Title = news.Title;
                     model.Type = news.Type;
-                    model.UserID = news.UserID; model.ShowTime = news.ShowTime;
+                    model.UserID = news.UserID;
+                    model.ShowTime = news.ShowTime;
                     id = model.Id;
                     return dataOperate.Update(model);
                 }
@@ -53,16 +54,16 @@ namespace AiErLan.Handle
         /// </summary>
         /// <param name="rep"></param>
         /// <returns></returns>
-        public IQueryable<Data.News> GetNewsList(NewsReq rep,out int totalCount)
+        public IQueryable<Data.News> GetNewsList(NewsReq rep, out int totalCount)
         {
-            var list=dataOperate.FindAll<Data.News>();
-            if (!string.IsNullOrWhiteSpace( rep.Name))
+            var list = dataOperate.FindAll<Data.News>();
+            if (!string.IsNullOrWhiteSpace(rep.Name))
             {
                 list = list.Where(s => s.Title.Contains(rep.Name));
             }
             if (rep.Type.HasValue)
             {
-                list = list.Where(s =>s.Type==rep.Type);
+                list = list.Where(s => s.Type == rep.Type);
             }
             list = list.OrderByDescending(s => s.CreateDateTime);
             totalCount = list.Count();
@@ -70,8 +71,8 @@ namespace AiErLan.Handle
             {
                 list = list.Skip((rep.PageIndex.Value - 1) * rep.PageSize.Value).Take(rep.PageSize.Value);
             }
-            return list; 
-              
+            return list;
+
         }
         public IQueryable<Data.News> GetNewsList(Expression<Func<Data.News, bool>> fun)
         {
@@ -82,9 +83,28 @@ namespace AiErLan.Handle
         {
             return dataOperate.Find<Data.News>(s => s.Id == id);
         }
-        public Data.News GetNewsById(long? id,int type)
+        public Data.News GetNewsById(long? id, int type)
         {
-            return dataOperate.Find<Data.News>(s => s.Id == id&&s.Type==type);
+            return dataOperate.Find<Data.News>(s => s.Id == id && s.Type == type);
+        }
+
+
+        /// <summary>
+        /// 删除新闻
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool DelNews(long id)
+        {
+            var news = dataOperate.Find<Data.News>(s => s.Id == id);
+            if (news != null)
+            {
+                return dataOperate.Remove(news);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

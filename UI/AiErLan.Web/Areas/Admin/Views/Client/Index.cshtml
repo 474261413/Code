@@ -1,0 +1,46 @@
+﻿@model  IQueryable<Client>
+@{
+    ViewBag.Title = "客户列表";
+
+    var TypeList = AiErLan.Utils.EnumUtil.GetList(typeof(ClientType)).Select(s => new SelectListItem
+    {
+        Text = s.EnumDescription,
+        Value = s.EnumID
+    }).OrderByDescending(s => s.Value); 
+}
+@section cssHead{
+    <style>
+        .selectleft {
+        }
+    </style>
+}
+@section scriptFoot{
+
+    <script src="/Scripts/AiErLan.js"></script>
+    <script type="text/javascript"> 
+    </script>
+
+}
+<h3>客户列表</h3>
+<br />
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <label class="control-label">姓名：</label>  <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label class="control-label">类型：</label>  @Html.DropDownList("Type", TypeList, "全部", new { @class = "form-control" })
+            </div>
+
+
+
+            <button type="button" onclick="AiErLan.ClientPage(1)" class="btn btn-info"><i class="fa fa-search"></i>搜索</button>
+
+        </div>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<div class="ibox-content" id="list">@Html.Partial("_Index", Model)</div>
+

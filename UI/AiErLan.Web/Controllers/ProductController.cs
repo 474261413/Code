@@ -27,10 +27,9 @@ namespace AiErLan.Web.Controllers
             }
             return View();
         }
-
+        [OutputCache(Duration = 18000, Location = System.Web.UI.OutputCacheLocation.Any, VaryByParam = "id")]
         public ActionResult Detail(long id = 0)
-        {
-
+        { 
             var model = newsbll.GetNewsById(id, (int)NewsType.CP);
             return View(model);
         }

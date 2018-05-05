@@ -1,0 +1,67 @@
+﻿@model  IQueryable<Client>
+@{
+    //IQueryable
+    Layout = null;
+}
+<table class="table table-bordered table-striped datatable ">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>面积</th>
+            <th>地址</th>
+            <th>类别</th>
+            @*<th>是否显示</th>*@
+            <th>其他</th>
+            <th>创建时间</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="loadingContent" style="display:none;"><td colspan="10" style="text-align:center;"><img src="/Content/images/loading.gif">正在加载数据，请稍候...</td></tr>
+        @if (Model == null || !Model.Any())
+        {
+            <tr><td colspan="10" style="text-align:center;">暂无数据！</td></tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@(item.Name)</td>
+                    <td>@(item.Phone)</td>
+                    <td>@(item.Serial)</td>
+                    <td>@(item.Address)</td>
+                    <td>@( EnumUtil.GetDescription(typeof(ClientType), item.Type))</td>
+                    @*<td>
+                        @if (item.Status == (int)NewsStatus.YC)
+                        {
+                            <span style="color:red">
+                                @( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))
+                            </span>
+                        }
+                        else
+                        {
+                            @( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))
+
+                        }
+                    </td>*@
+                    <td>@item.Remark</td>
+                    <td>@item.CreateDateTime</td>
+
+                     
+                </tr>
+            }
+        }
+
+        <tr>
+            <td colspan="10" align="right">
+                <div class="dataTables_paginate paging_bootstrap" id="table-1_paginate">
+                    @Html.Raw(ViewBag.Pager)
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

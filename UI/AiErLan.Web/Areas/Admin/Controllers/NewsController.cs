@@ -21,7 +21,7 @@ namespace AiErLan.Web.Areas.Admin.Controllers
         {
             int total = 0;
             rep.PageIndex = rep.PageIndex ?? 1;
-            rep.PageSize = rep.PageSize ?? 5;
+            rep.PageSize = rep.PageSize ?? 15;
             var list = newsbll.GetNewsList(rep, out total);
             ViewBag.Pager = PagerHelper.CreatePagerByAjax(rep.PageIndex.Value, rep.PageSize.Value, total, "AiErLan.NewsPage");
             if (Request.IsAjaxRequest())
@@ -56,6 +56,16 @@ namespace AiErLan.Web.Areas.Admin.Controllers
 
             return Json(new { success = result, id = id }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult DelNews(long id)
+        { 
+            bool result = false; 
+            result = newsbll.DelNews(id); 
+            return Json(new { success = result }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
 
     }
 }
