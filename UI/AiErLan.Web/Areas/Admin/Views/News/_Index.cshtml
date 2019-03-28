@@ -31,11 +31,11 @@
                     <td>@(item.Title)</td>
                     <td>@( EnumUtil.GetDescription(typeof(NewsType), item.Type))</td>
                     <td>
-                        @if (item.Status ==(int) NewsStatus.YC)
+                        @if (item.Status == (int)NewsStatus.YC)
                         {
                             <span style="color:red">
                                 @( EnumUtil.GetDescription(typeof(NewsStatus), item.Status))
-                        </span>
+                            </span>
                         }
                         else
                         {
