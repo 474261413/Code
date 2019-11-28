@@ -85,7 +85,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\AiErLan.Log\AiErLan.Log.csproj">
+    <ProjectReference Include="..\..\lib\AiErLan.Log1\AiErLan.Log.csproj">
       <Project>{ba9e676a-7b15-4cdf-ab3b-39df81f7edfc}</Project>
       <Name>AiErLan.Log</Name>
     </ProjectReference>

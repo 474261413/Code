@@ -7,8 +7,8 @@
     <ProjectGuid>{BA9E676A-7B15-4CDF-AB3B-39DF81F7EDFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ebd.SchoolExamination.Log</RootNamespace>
-    <AssemblyName>Ebd.SchoolExamination.Log</AssemblyName>
+    <RootNamespace>AiErLan.Log</RootNamespace>
+    <AssemblyName>AiErLan.Log</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

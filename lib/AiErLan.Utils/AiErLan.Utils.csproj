@@ -80,7 +80,7 @@
     <Compile Include="Tool.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AiErLan.Log\AiErLan.Log.csproj">
+    <ProjectReference Include="..\AiErLan.Log1\AiErLan.Log.csproj">
       <Project>{ba9e676a-7b15-4cdf-ab3b-39df81f7edfc}</Project>
       <Name>AiErLan.Log</Name>
     </ProjectReference>
